@@ -1,0 +1,123 @@
+.container {
+  background-color: rgb(197, 197, 197);
+  position: relative;
+}
+
+.static {
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+  background-color: aquamarine;
+  position: sticky;
+  top: 20px; /* default for every element */
+  left: 30px;
+  z-index: 1;
+}
+
+.hello {
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+  background-color: blue;
+  position: relative;
+}
+
+.close {
+  height: 20px;
+  width: 20px;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* preference of css is top to down  */
+
+.relative {
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+  background-color: azure;
+  position: relative;
+  bottom: 20px;
+  top: 10px;
+  left: 100px;
+}
+
+.absolute {
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+  background-color: gray;
+  position: absolute;
+  top: 30px;
+  right: 300px;
+}
+
+.fixed {
+  height: 80px;
+  width: 800px;
+  border: 2px solid black;
+  background-color: yellow;
+  position: fixed;
+  right: 10px;
+  top: 10px;
+}
+
+.sticky {
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+  background-color: green;
+  position: sticky;
+  top: 0;
+  right: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  gap: 20px;
+}
+
+.hell {
+  display: flex;
+  gap: 20px;
+}
+
+.box {
+  height: 100px;
+  width: 100px;
+  background-color: aqua;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  /* display: none; */
+}
+
+/* 1em = 16px  */
+@media (max-width: 768px) {
+  .container {
+    background-color: skyblue;
+    gap: 5px;
+    padding: 10px;
+  }
+
+  .hell {
+    flex-direction: column;
+  }
+}
+@media (max-width: 468px) {
+  .container {
+    flex-direction: column;
+    background-color: rgb(23, 49, 60);
+    gap: 2px;
+    padding: 20px;
+  }
+}

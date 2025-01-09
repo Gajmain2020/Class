@@ -1,31 +1,11 @@
-* {
-  background-color: gray;
-  font-size: 30px;
-  padding: 0px;
+img {
+  width: 120px;
 }
 
-div {
-  background-color: red;
+table {
+  border: 1px solid black;
 }
 
-.one {
-  background-color: aqua;
-  font-size: small;
-}
-
-#two {
-  width: 500px;
-  height: 200px;
-  background-color: yellow;
-  font-size: 30px;
-  font-weight: 600;
-  font-style: italic;
-  /* padding-top: 40px;
-  padding-left: 40px; */
-  border: 10px solid black;
-  border-radius: 10px;
-  padding-inline: 50px;
-  padding-top: 20px;
-  margin-top: 100px;
-  margin-inline: auto;
+thead {
+  border: 2px solid red;
 }
