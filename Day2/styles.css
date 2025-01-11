@@ -7,6 +7,32 @@
   display: flex;
   justify-content: space-between;
   background-color: skyblue;
-  padding-block: 10px;
+  padding-block: 5px;
   padding-inline: 5px;
+}
+.brand img{
+  max-width: 100%;
+  height: auto;
+  width: 50px;
+
+}
+.footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: aquamarine;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px 20px;
+}
+@media(max-width: 500px){
+  .navbar{
+    justify-content: center;
+  }
+  .brand{
+    justify-content: center;
+  }
+  .login{
+    display: none;
+  }
 }
