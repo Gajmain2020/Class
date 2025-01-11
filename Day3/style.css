@@ -1,0 +1,16 @@
+.btn {
+  background-color: red;
+  transition: all;
+  transition-duration: 500ms;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.btn:hover {
+  background-color: skyblue;
+}
+
+.btn:active {
+  background-color: blue;
+  border: 10px solid blueviolet;
+}

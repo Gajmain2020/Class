@@ -132,3 +132,7 @@ setTimeout(() => {
 console.log("end");
 
 //start end step 1 step 2 step 3
+
+function sayHello() {
+  console.log("hello");
+}
