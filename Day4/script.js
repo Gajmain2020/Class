@@ -73,16 +73,14 @@ function fetchData() {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-      return response; // Parse JSON response
+      return response.json(); // Parse JSON response
     })
     .then((data) => {
       // Display the fetched data in the HTML
       title.innerText = data.title; // Set the title in the #title element
       body.innerText = data.body; // Set the body text in the #body element
     })
-    .catch((error) => 
-      console.error("Error fetching data:", error)
-     );
+    .catch((error) => console.error("Error fetching data:", error));
 }
 
 // Get references to the HTML elements
@@ -92,4 +90,3 @@ const body = document.getElementById("body");
 
 // Add event listener to the button
 button.addEventListener("click", fetchData);
-
