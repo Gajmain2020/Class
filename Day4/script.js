@@ -67,15 +67,29 @@
 //   .catch((error) => console.error("Error fetching data:", error));
 
 function fetchData() {
-  //there should be a fetch call to jsonplaceholder for a post
-  // url  "https://jsonplaceholder.typicode.com/posts/1"
-
-  body.innerText = "data";
-  title.innerText = "hello";
+  // Fetch data from the API
+  fetch("https://jsonplaceholder.typicode.com/posts/10")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response; // Parse JSON response
+    })
+    .then((data) => {
+      // Display the fetched data in the HTML
+      title.innerText = data.title; // Set the title in the #title element
+      body.innerText = data.body; // Set the body text in the #body element
+    })
+    .catch((error) => 
+      console.error("Error fetching data:", error)
+     );
 }
 
+// Get references to the HTML elements
 const button = document.getElementById("getTodo");
 const title = document.getElementById("title");
 const body = document.getElementById("body");
 
+// Add event listener to the button
 button.addEventListener("click", fetchData);
+
