@@ -191,4 +191,6 @@ export default function App() {
 // create component for card and show it only if the user is there (use above fetch call to get dummy user)
 // make above fetch button to be able to reset the data in the user as null
 
-// create a counter app
+// 1. create a counter app with +3 +1 button and -1 buttons
+// 2. create card component and above task
+// 3. try creating todo
