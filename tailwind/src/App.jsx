@@ -7,11 +7,6 @@ function App() {
   const [todo, setTodo] = useState("");
   const [allTodo, setAllTodo] = useState([]);
 
-  const [city, setCity] = useState("");
-  const [weatherData, setWeatherData] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-
   function onButton1Click() {
     console.log("button 1 was clicked");
   }
@@ -39,30 +34,8 @@ function App() {
     //use filter => alltodo => alltod->index agar wo passed wale index dono same nai hai to usko store karna hai
   }
 
-  function handleCityChange(e) {
-    setCity(e.target.value);
-  }
-
-  async function fetchWeather() {
-    setLoading(true);
-    setWeatherData(null);
-    setError(null);
-
-    try {
-      const response = await fetch("http://api.openweathermap.org/");
-      if (!response.ok) {
-        throw new Error(
-          "Failed to fetch weather data. Please check the city name."
-        );
-      }
-      const data = await response.json();
-      setWeatherData(data);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  }
+  // i =  i!==index
+  // ["hello4","hello3","heelo2"(2), 'hello1']
 
   return (
     <>
@@ -97,40 +70,6 @@ function App() {
 
         {/* To show todos */}
         <Todos deleteFunction={handleDelete} todos={allTodo} />
-      </div>
-
-      {/* Weather Application */}
-      <div className="bg-yellow-300 px-20 py-10 mt-10">
-        <div className="text-2xl font-semibold mb-4">Weather app</div>
-        <div className="flex gap-4 mb-4">
-          <input
-            value={city}
-            type="text"
-            className="border bg-white rounded px-4 py-1"
-            placeholder="Enter city name"
-            onChange={handleCityChange}
-          />
-          <button
-            onClick={fetchWeather}
-            disabled={loading || city.trim() === ""}
-            className={`${
-              loading ? "bg-gray-400" : "bg-green-500 hover:bg-green-700"
-            } text-white px-4 py-1 rounded transition`}
-          >
-            {loading ? "Loading..." : "Search"}
-          </button>
-        </div>
-        {error && <div className="text-red-600 font-semibold">{error}</div>}
-        {weatherData && (
-          <div className="bd-white p-4 rounded shadow-md">
-            <div className="font-semibold text-lg">
-              Weather in {weatherData.name}
-            </div>
-            <div>Temperature: {weatherData.main.temp}°C</div>
-            <div>Condition: {weatherData.weather[0].description}</div>
-            <div>Humidity: {weatherData.main.humidity}%</div>
-          </div>
-        )}
       </div>
     </>
   );

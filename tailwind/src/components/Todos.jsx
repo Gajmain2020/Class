@@ -3,7 +3,7 @@ function Todos({ todos, deleteFunction }) {
     <div>
       {todos.length > 0
         ? todos.map((todo, idx) => (
-            <div>
+            <div key={idx}>
               {idx + 1}. {todo}
               <button
                 onClick={() => deleteFunction(idx)}
