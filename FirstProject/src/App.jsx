@@ -1,7 +1,7 @@
 import "./App.css";
-// import Card from "./components/Card";
 
 import { useState } from "react";
+import Card from "./components/Card";
 
 // // const { id, name } = obj; //destructuring the object
 // // console.log("this is id", id, name);
@@ -204,25 +204,6 @@ import { useState } from "react";
 // 1. create a counter app with +3 +1 button and -1 buttons
 // 2. create card component and above task
 // 3. try creating todo
-function Card({ user }) {
-  return (
-    <div className="card">
-      <h3>User Information</h3>
-      <p>
-        <b>Name:</b>
-        {user.name}
-      </p>
-      <p>
-        <b>Email:</b>
-        {user.email}
-      </p>
-      <p>
-        <b>Age:</b>
-        {user.age}
-      </p>
-    </div>
-  );
-}
 
 function Counter() {
   const [count, setCount] = useState(0);

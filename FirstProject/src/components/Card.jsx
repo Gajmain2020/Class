@@ -1,17 +1,19 @@
-function Card({ student }) {
-  const { name, imgUrl, ...bachaHua } = student; //destructure
-  // ... is rest operator
-  console.log("this is bacha hua", bachaHua);
-
+function Card({ user }) {
   return (
-    <div className="container">
-      <div>
-        <img src={imgUrl} alt="tis is image" />
-      </div>
-      <div>{name}</div>
-      {/* <div>{student.rollNo}</div>
-        <div>{student.dob}</div>
-        <div>{student.blood}</div> */}
+    <div className="card">
+      <h3>User Information</h3>
+      <p>
+        <b>Name:</b>
+        {user.name}
+      </p>
+      <p>
+        <b>Email:</b>
+        {user.email}
+      </p>
+      <p>
+        <b>Age:</b>
+        {user.age}
+      </p>
     </div>
   );
 }

@@ -1,12 +1,59 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 10px 20px;
+  color: white;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar-logo {
+  font-size: 1.5em;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  margin-left: 20px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+.navbar-links a:hover {
+  text-decoration: underline;
+}
 .container {
   max-width: 400px;
-  margin: 0 auto;
   text-align: center;
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
-
+  position: absolute;
+  top: 50%;
+  right: 30px; /* Distance from the right edge */
+  transform: translateY(-50%);
+  align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding-top: 60px;
+  padding-bottom: 30px; /* Prevent navbar overlap */
 }
 
 .login-form {
@@ -39,4 +86,30 @@ input {
 }
 .onsubmit:hover {
   background-color: #0056b3;
+}
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.social-icons {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 0;
+  margin: 5px 0 0;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 1.5em;
 }
