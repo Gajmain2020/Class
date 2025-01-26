@@ -1,18 +1,25 @@
 import { useState } from "react";
 import "./App.css";
 import Button from "./components/Button";
-import Todos from "./components/Todos";
+import UserDetails from "./components/UserDetails";
 
 function App() {
   const [todo, setTodo] = useState("");
   const [allTodo, setAllTodo] = useState([]);
 
-  function onButton1Click() {
-    console.log("button 1 was clicked");
-  }
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+  });
 
-  function onButton3Click() {
-    console.log("button 3 was clicked");
+  const [updatedUser, setUpdatedUser] = useState(null);
+
+  function handleInputChange(e) {
+    const { name, value } = e.target;
+    setUser((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   }
 
   function handleChange(e) {
@@ -20,39 +27,50 @@ function App() {
   }
 
   function handleAddTodo() {
-    // [] todo=> bartan dhona hai => ['bartan dhona hai']
-    // ['bartan dhona hai'] todo=>hagna hai => ['bartan dhona hai', "hagna hai"]
-    if (todo.trim() != "") {
-      setAllTodo((allTodo) => [todo, ...allTodo]);
+    if (todo.trim() !== "") {
+      setAllTodo((allTodo) => [{ text: todo, isComplete: false }, ...allTodo]);
       setTodo("");
     }
   }
 
   function handleDelete(index) {
     setAllTodo((allTodo) => allTodo.filter((_, i) => i !== index));
-
-    //use filter => alltodo => alltod->index agar wo passed wale index dono same nai hai to usko store karna hai
   }
 
-  // i =  i!==index
-  // ["hello4","hello3","heelo2"(2), 'hello1']
+  function handleMarkComplete(index) {
+    setAllTodo((allTodo) =>
+      allTodo.map((item, i) =>
+        i === index ? { ...item, isComplete: !item.isComplete } : item
+      )
+    );
+  }
+
+  function handleUpdate() {
+    setUpdatedUser(user);
+  }
 
   return (
     <>
-      <div className="bg-red-200 ">
-        <Button clickHandle={onButton1Click} title="button 1" />
+      <div className="bg-red-200">
         <Button
-          clickHandle={() => alert("button 2 was clicked")}
+          clickHandle={() => alert("button 1 clicked")}
+          title="button 1"
+        />
+        <Button
+          clickHandle={() => alert("button 2 clicked")}
           title="button 2"
         />
-        <Button clickHandle={onButton3Click} title="button 3" />
+        <Button
+          clickHandle={() => alert("button 3 clicked")}
+          title="button 3"
+        />
       </div>
 
-      {/* Tod Application */}
+      {/* Todo Application */}
       <div className="bg-pink-400 px-20 py-10">
-        <div className="font-semibold font-2xl">TODO APP</div>
-        {/* input field */}
-        <div className="flex gap-4">
+        <div className="font-semibold text-2xl">TODO APP</div>
+        {/* Input field */}
+        <div className="flex gap-4 mt-4">
           <input
             value={todo}
             type="text"
@@ -68,26 +86,72 @@ function App() {
           </button>
         </div>
 
-        {/* To show todos */}
-        <Todos deleteFunction={handleDelete} todos={allTodo} />
+        {/* Display Todos */}
+        <div className="mt-6">
+          {allTodo.map((item, index) => (
+            <div
+              key={index}
+              className={`flex justify-between items-center bg-white rounded p-2 mb-2 shadow ${
+                item.isComplete ? "line-through text-gray-500" : ""
+              }`}
+            >
+              <span>{item.text}</span>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => handleMarkComplete(index)}
+                  className={`px-2 py-1 rounded ${
+                    item.isComplete
+                      ? "bg-green-400 hover:bg-green-600"
+                      : "bg-yellow-400 hover:bg-yellow-600"
+                  }`}
+                >
+                  {item.isComplete ? "Undo" : "Complete"}
+                </button>
+                <button
+                  onClick={() => handleDelete(index)}
+                  className="px-2 py-1 bg-red-400 hover:bg-red-600 rounded"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="p-6 bg-gray-200 rounded-lg w-[400px] mx-auto mt-10">
+        <h2 className="text-xl font-bold mb-4 text-center">Update Profile</h2>
+        <div className="mb-4">
+          <input
+            type="text"
+            name="name"
+            value={user.name}
+            onChange={handleInputChange}
+            placeholder="Enter your name"
+            className="w-full px-3 py-2 border border-gray-400 rounded"
+          />
+        </div>
+        <div className="mb-4">
+          <input
+            type="email"
+            name="email"
+            value={user.email}
+            onChange={handleInputChange}
+            placeholder="Enter your email"
+            className="w-full px-3 py-2 border border-gray-400 rounded"
+          />
+        </div>
+        <button
+          onClick={handleUpdate}
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+        >
+          Update
+        </button>
+        {updatedUser && <UserDetails user={updatedUser} />}
+        {/* Show updated details in the child component */}
       </div>
     </>
   );
 }
 
 export default App;
-
-// parent (APP.jsx is parent) -> child(s) -> child(s)
-
-// Homework ->
-// make this todo a bit stylish
-// make above handleDelete function to be operating
-
-// from slides =>
-// make weather app
-// requirements
-// input field to search the city
-// search button
-// if any error happens in api call for weather forecast give them error
-// if you get the data then show the data
-// brain stormer=> fetch => time => when api do not send anything till then the search should be disabled (ChatGPT allowed)
