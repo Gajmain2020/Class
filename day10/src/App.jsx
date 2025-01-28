@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Contact from "./pages/Contact";
 import UserDetails from "./pages/UserDetails";
-import { ProductDetails } from "./pages/ProductDetails";
+import ProductDetails from "./pages/ProductDetails";
 import NotFound from "./pages/NotFound";
 
 const products = [
@@ -59,7 +59,7 @@ export default function App() {
         {/* Dynamic Route */}
         <Route path="/user/:userId" element={<UserDetails />} />
 
-        <Route path="*" element={<>Path not found</>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       {/* user/123=>userId = 123 ||  user/234=>userId=234 user/kachraSeth=>userId=kachraSeth user/heraPheri */}
     </BrowserRouter>
