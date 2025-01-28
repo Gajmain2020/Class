@@ -49,7 +49,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/user" element={<>User </>} />
-        {/* <Route path="/product" element={<>Product</>} /> */}
+        <Route path="/product" element={<>Product</>} />
 
         <Route
           path="/product/:productId"
