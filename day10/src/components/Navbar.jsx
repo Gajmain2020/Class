@@ -21,6 +21,7 @@ export default function Navbar() {
       <NavButton path="/about" title="About" />
       <NavButton path="/contact" title="Contact" />
       <NavButton path="/user" title="User" />
+      <NavButton path="/product" title="Product" />
     </div>
   );
 }

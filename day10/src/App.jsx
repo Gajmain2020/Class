@@ -5,19 +5,23 @@ import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Contact from "./pages/Contact";
 import UserDetails from "./pages/UserDetails";
+import { ProductDetails } from "./pages/ProductDetails";
+import NotFound from "./pages/NotFound";
 
 const products = [
   {
     productId: 123,
     productName: "Chabi challa",
     productPrice: 200,
+    productImage: "https://via.placeholder.com/150",
   },
   {
     productId: 122,
-    productName: "Chabi ",
+    productName: "Chabi",
     productPrice: 500,
+    productImage: "https://via.placeholder.com/150",
   },
-  //   ... so many products
+  // Add more products as needed
 ];
 
 export default function App() {
@@ -45,6 +49,12 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/user" element={<>User </>} />
+        {/* <Route path="/product" element={<>Product</>} /> */}
+
+        <Route
+          path="/product/:productId"
+          element={<ProductDetails products={products} />}
+        />
 
         {/* Dynamic Route */}
         <Route path="/user/:userId" element={<UserDetails />} />
