@@ -175,6 +175,7 @@ import Homepage from "./components/Homepage";
 import Products from "./components/Products";
 import Cart from "./components/Cart";
 import { ShoppingProvider } from "./utils/shoppingContext";
+import ProductDetails from "./components/ProductDetails";
 
 export default function App() {
   // CART_ARRAY
@@ -184,7 +185,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/all-products" element={<Products />} />
-          <Route path="/product/:pId" element={<>Products details page</>} />
+          <Route path="/product/:pId" element={<ProductDetails />} />
           {/** Create product details page */}
           <Route path="/cart" element={<Cart />} />
         </Routes>
