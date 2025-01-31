@@ -193,3 +193,16 @@ export default function App() {
     </ShoppingProvider>
   );
 }
+
+// day 13 homework:
+// UI
+// create a nav to go to hompage products and cart
+// style things a bit better
+
+// function
+// implement handleIncrementItem() in cart component
+// fix handleRemoveItem() in cart component to work accordingly
+// add a button to add product at the homepage -> ensure that product id is unique -> if same product id is entered by user then show them error
+
+// Reading
+// Read about localStorage

@@ -1,14 +1,14 @@
 import { useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { ShoppingContext } from "../utils/shoppingContext";
+import BackButton from "./BackButton";
 
 export default function ProductDetails() {
   const { pId } = useParams();
-  const navigate = useNavigate();
   const { products, setCartItems, cartItems } = useContext(ShoppingContext);
 
   // Find the product based on the pId
-  const product = products.find((item) => item.pId === pId);
+  const product = products.find((product) => product.pId.toString() === pId);
 
   if (!product) {
     return <div className="text-center text-red-500">Product not found!</div>;
@@ -20,12 +20,8 @@ export default function ProductDetails() {
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-      <button
-        onClick={() => navigate(-1)}
-        className="mb-4 bg-gray-300 py-2 px-4 rounded hover:bg-gray-400 transition"
-      >
-        Back
-      </button>
+      <BackButton />
+      {/* Check here if that item is added to cart if yes added then just show to go to cart or other button not add to cart */}
       <div className="border rounded-lg shadow-md p-6">
         <img
           src={product.pImage}

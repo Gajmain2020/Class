@@ -33,6 +33,7 @@
 import { useNavigate } from "react-router-dom";
 
 export default function Homepage() {
+  document.title = "Homepage";
   const navigate = useNavigate();
   return (
     <div className="h-[100dvh] flex justify-center items-center">
