@@ -176,12 +176,13 @@ import Products from "./components/Products";
 import Cart from "./components/Cart";
 import { ShoppingProvider } from "./utils/shoppingContext";
 import ProductDetails from "./components/ProductDetails";
-
+import Navbar from "./components/Navbar";
 export default function App() {
   // CART_ARRAY
   return (
     <ShoppingProvider>
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/all-products" element={<Products />} />
