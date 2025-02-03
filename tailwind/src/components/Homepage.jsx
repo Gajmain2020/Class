@@ -30,11 +30,44 @@
 //   );
 // }
 
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Homepage() {
   document.title = "Homepage";
   const navigate = useNavigate();
+
+  const [products, setProducts] = useState([]);
+  const [productName, setProductName] = useState("");
+  const [productId, setProductId] = useState("");
+  const [productPrice, setProductPrice] = useState("");
+  const [productImage, setProductImage] = useState("");
+  const [error, setError] = useState("");
+
+  function handleAddProduct() {
+    if (!productId || !productName) {
+      setError("Product name and ID are required");
+      return;
+    }
+    if (products.some((product) => product.id === productId)) {
+      setError("Product ID must be unique");
+      return;
+    }
+    setProducts([
+      ...products,
+      {
+        id: productId,
+        name: productName,
+        price: productPrice,
+        image: productImage,
+      },
+    ]);
+    setProductName("");
+    setProductId("");
+    setProductPrice("");
+    setProductImage("");
+    setError("");
+  }
   return (
     <div className="h-[100dvh] flex justify-center items-center">
       <div className="flex flex-col gap-2 justify-center items-center">
@@ -51,6 +84,43 @@ export default function Homepage() {
         >
           Go to cart
         </button>
+        <div className="mt-4 flex flex-col gap-2 items-center">
+          <input
+            type="text"
+            placeholder="Product Name"
+            value={productName}
+            onChange={(e) => setProductName(e.target.value)}
+            className="border p-2 rounded"
+          />
+          <input
+            type="text"
+            placeholder="Product ID"
+            value={productId}
+            onChange={(e) => setProductId(e.target.value)}
+            className="border p-2 rounded"
+          />
+          <input
+            type="number"
+            placeholder="Product Price"
+            value={productPrice}
+            onChange={(e) => setProductPrice(e.target.value)}
+            className="border p-2 rounded"
+          />
+          <input
+            type="text"
+            placeholder="Product Image URL"
+            value={productImage}
+            onChange={(e) => setProductImage(e.target.value)}
+            className="border p-2 rounded"
+          />
+          {error && <p className="text-red-500">{error}</p>}
+          <button
+            onClick={handleAddProduct}
+            className="bg-green-300 rounded px-4 py-2"
+          >
+            Add Product
+          </button>
+        </div>
       </div>
     </div>
   );
